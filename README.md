@@ -17,7 +17,7 @@
 ## Descrição
 
 A aplicação a ser desenvolvida deve permitir que pessoas encontrem professores para se candidatar
-a uma aula de maneira fácil, além de facilitar a vida de novos professores com um cadastro simples e
+a uma aula de maneira fácil e intuitiva, além de facilitar a vida de novos professores com um cadastro simples e
 para receber as candidaturas dos alunos.
 
 ## Layout da aplicação
