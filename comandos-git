@@ -1,0 +1,5 @@
+git status -s: mostrar a situação da branch de forma resumida.
+git log + apertar letra q para finalizar e a tecla entre para continuar.
+%cn: commit name.
+ammend: funciona para poder juntar um commit frito anteriormente.
+--no-edit: reaproveitar o texto do commit anterior.
