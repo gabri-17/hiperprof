@@ -3,6 +3,8 @@ import useIndex from "@data/Hooks/pages/useIndex";
 import { Icon, TextField, Button } from "@mui/material";
 import { BoxButtons, HomeContainer } from "@styles/pages/index.styles";
 
+
+
 export default function Home() {
   const {messageErro,setSearch,onBuscarProfessor} = useIndex();
   return (
