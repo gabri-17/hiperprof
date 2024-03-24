@@ -3,3 +3,4 @@ git log + apertar letra q para finalizar e a tecla entre para continuar.
 %cn: commit name.
 ammend: funciona para poder juntar um commit frito anteriormente.
 --no-edit: reaproveitar o texto do commit anterior.
+stashes: basicamente, é um local que se salva alguns arquivos modificados e é possível recuperá-los depois.
