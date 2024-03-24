@@ -15,5 +15,13 @@ export const Router = {
             router.push({pathname:this.name, query: {search}});
         },
         icon: "",
-    }
+    },
+    detalheProfessor: {
+        name: "/professor/detalhe-professor",
+        push: function (router: NextRouter){
+            router.push({pathname:this.name});
+        },
+        icon: "",
+    },
+    
 };
