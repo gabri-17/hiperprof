@@ -1,3 +1,4 @@
+import Fetch from "@components/data-display/Fetch";
 import PageTitle from "@components/data-display/PageTitle";
 import ListaProfessorCard from "@components/data-display/ProfessorCard/listaProfessorCard";
 import usePesquisaProfessor from "@data/Hooks/pages/usePesquisaProfessor";
@@ -23,11 +24,21 @@ export default function PesquisaProfessorPage() {
         subtitle="Clique sobre um professor para saber os detalhes e possivelmente marcar uma aula com ele."
       />
 
-      {/* Botão para selecionar professor(a) */}
-      <ListaProfessorCard
-        professores={professores ?? []} // ?? [] : se for undefined vai ser uma lista vazia.
-        onClick={selecionarProfessor}
+      <Fetch
+        data={professores}
+        mensage={"Nenhum professor encontrado"}
+        render= {(professores) => {
+          return (
+            // {/* Botão para selecionar professor(a) */}
+            <ListaProfessorCard
+              professores={professores}
+              onClick={selecionarProfessor}
+            />
+            );
+        }}
+        
       />
+
     </Container>
   );
 }
