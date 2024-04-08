@@ -1,22 +1,32 @@
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { ReactElement } from "react";
 
-interface FetchProps<T = unknown>{ // sem obrigação de inicializá o FetchProps passando o Generics.
-    data: T[] | undefined;/* não pode ser somente para ProfessorInterface, pode ser para qualquer outro tipo de dado.*/
-    render: (data: T[]) => ReactElement; // função que recebe um array de dados e retorna um elemento React.
+// unknown: não há obrigação de inicializar o fetchProps passando o Generics.
+interface FetchProps<T = unknown>{
+    /* Data tornou-se uma lista genérica: ele pode ser qualquer tipo de 
+    dado (exs.: ProfessorInterface, AlunoInterface).*/
+    data: T[] | undefined;
+    render: (data: T[]) => ReactElement;
+    mensage?: string;
+    maxLength?: number;
 }
 
-type FetchComponentType = <G>(props: FetchProps<G>) => ReactElement;
+// Mesmo tipo de dado do retorno do componente Fetch.
+type FetchComponentType = <G>(props: FetchProps<G>) => ReactElement
 
-const Fetch = ({data}) =>{ // desestruturação das props
-    if(!data){
-        return render();
+const Fetch: FetchComponentType = ({data, render, mensage, maxLength}) => {
+    if(data){
+        // slice: cortar parte da lista.
+        const dataFilted = data.slice(0,maxLength);
+        if(dataFilted.length === 0) <Typography>{mensage}</Typography>
+        return render(dataFilted);    
     }
-   return (
-    <Box>
-        <CircularProgress></CircularProgress>
-    </Box>
-   )
-}
+    return (
+        <Box>
+            <CircularProgress />
+        </Box>
+
+    )
+};
 
 export default Fetch;

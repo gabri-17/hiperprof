@@ -22,6 +22,7 @@ export default function usePesquisaProfessor() {
       .catch(() => setProfessores([]));
   }, [search]); //[]: array de dependências vazio, só vai ser executado uma única vez.
 
+  // Alteração a todo momento com debouncing.
   function onSearch(value:string) {
 
     
@@ -42,10 +43,10 @@ export default function usePesquisaProfessor() {
   }
   function selecionarProfessor(professor: ProfessorInterface){
     // sessionStorage: só pode colocar somente string.
-    // Colocar valores bem específicos do próprio projeto.
+    // sessionStorage: colocar valores bem específicos do próprio projeto.
     sessionStorage.setItem("hyperprof_professor", JSON.stringify(professor))
     // Navegação para a próxima tela
-    Router.detalheProfessor.push(router); // Alterar a URL depois da navegação.
+    Router.detalheProfessor.push(router, search); // Alterar a URL depois da navegação.
   }
 
   return { professores, onSearch, selecionarProfessor};

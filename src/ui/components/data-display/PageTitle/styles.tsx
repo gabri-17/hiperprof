@@ -11,7 +11,7 @@ export const PageTitleContainer = styled('div')`
 `;
 
 export const PageTitleStyled = styled((props) => (
-    <Typography variant='h1' component={'h2'} {...props}/>
+    <Typography variant='h3' component={'h2'} {...props}/>
 ))<TypographyProps>`
     text-transform: uppercase;
     font-weight: bold;
@@ -28,6 +28,6 @@ export const PageSubtitleStyled = styled((props) => (
     color: ${({theme}) =>  theme.palette.text.primary};
     text-transform: lowercase;
     ${({theme}) => theme.breakpoints.down('md')}{
-        font-size: ${({theme}) => theme.typography.body2.fontSize};
+        font-size: ${({theme}) => theme.typography.body1.fontSize};
     }
 `;
