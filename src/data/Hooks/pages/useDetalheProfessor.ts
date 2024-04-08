@@ -34,11 +34,13 @@ export default function useDetalheProfessor() {
       Router.home.push(router);
     }
 
-    // return () => {
-    //     // Exutado quando a tela (componente) for destruído(a)
-    //     sessionStorage.removeItem('hyperprof_professor'); // Remover o professor da sessão.
-    // }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      /*Toda vez que se sair da tela de detalhes do professor, simplesmente ele vai remover
+      da sessionStorage o professor selecionado.*/
+      // Executado quando a tela (componente) for destruído(a).
+      sessionStorage.removeItem("hyperprof_professor"); // Remover o professor da sessão.
+    };
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function getProfessores() {
@@ -60,11 +62,11 @@ export default function useDetalheProfessor() {
     // ["09/04/2024", "15:00"] -> Lista: [1° posição, 2° posição]
     // ["09", "04", "2024"]
     // ["15", "00"]
-    const [_data, time] = data.split(' '), // fragmentação da data e hora.
+    const [_data, time] = data.split(" "), // fragmentação da data e hora.
       [dia, mes, ano] = _data.split("/"),
       // ?? se for undefined, colocar uma  lista vazia: [].
       // time?: se der algum tipo de erro.
-      [hora, minuto] = time?.split(":") ?? []; 
+      [hora, minuto] = time?.split(":") ?? [];
     const newDate = new Date(`${mes} ${dia} ${ano} ${hora}: ${minuto} UTC`);
     return newDate;
   }
@@ -76,7 +78,7 @@ export default function useDetalheProfessor() {
       data_aula: formatDataToJson(aluno.data_aula as string),
     } as AlunoInterface;
     // ! : quer dizer que tem um dado (professor).
-    ApiService.post(`/api/professores/${professor!.id}/alunos`, newDate)
+    await ApiService.post(`/api/professores/${professor!.id}/alunos`, newDate)
       .then(() => {
         // Esperar
         setOpenDialog(false);
