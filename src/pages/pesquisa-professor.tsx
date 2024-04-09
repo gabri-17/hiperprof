@@ -1,6 +1,7 @@
 import Fetch from "@components/data-display/Fetch";
 import PageTitle from "@components/data-display/PageTitle";
 import ListaProfessorCard from "@components/data-display/ProfessorCard/listaProfessorCard";
+import Link from "@components/navigation/Link";
 import usePesquisaProfessor from "@data/Hooks/pages/usePesquisaProfessor";
 import { Container, Icon, TextField } from "@mui/material";
 
@@ -9,6 +10,7 @@ export default function PesquisaProfessorPage() {
   return (
     // Container: vai definir um limite de tamanho da tela (faz parte do Material UI).
     <Container>
+      <Link href="/">Link</Link>
       <TextField
         sx={{ mt: 4, mb: 2 }}
         label={"Encontre um professor"}
