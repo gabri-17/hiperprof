@@ -14,4 +14,10 @@ export const TextFormatService = {
     }
     return currencyFormatter.format(price); // retornar o preço em formato de string.
   },
+  dateFromText(value: string): string {
+    var data = new Date(value);
+    return `${data.toLocaleDateString("pt-BR")} ${data.toLocaleTimeString(
+      "pt-BR"
+    )}`;
+  },
 };
