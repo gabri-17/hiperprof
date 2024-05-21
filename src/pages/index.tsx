@@ -7,11 +7,11 @@ export default function Home() {
   const { messageErro, setSearch, onBuscarProfessor } = useIndex();
   return (
     <HomeContainer onSubmit={onBuscarProfessor}>
-      
       <PageTitle
         title="ENCONTRE O PROFESSSOR IDEAL PARA VOCÊ !"
         subtitle="Pesquise pelo professor ideal para você"
       />
+      
       <TextField
         sx={{ mt: 3, mb: 1 }}
         label="Encontre um professor"

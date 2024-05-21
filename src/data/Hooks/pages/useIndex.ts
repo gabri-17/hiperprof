@@ -1,6 +1,7 @@
+import { getUser } from "@data/services/MeService";
 import { Router } from "@routes/Routes";
 import { useRouter } from "next/router";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 export default function useIndex(){
     const router = useRouter(),
@@ -17,6 +18,12 @@ export default function useIndex(){
             setMessageErro("Digite pelo menos 3 caracteres");
         }
     }
+
+    useEffect(() =>{
+        // Escutar a resposta para fazer a navegação em caso de sucesso
+        getUser().then(() => Router.listaDeAlunos.push(router));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []) // [] para executar apenas uma vez.
     return {setSearch, messageErro, onBuscarProfessor};
 
 }
